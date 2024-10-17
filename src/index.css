@@ -68,7 +68,8 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.navigation a:hover, .navigation a:focus {
+.navigation a:hover,
+.navigation a:focus {
     background-color: #0056b3;
 }
 
@@ -217,7 +218,8 @@ body {
     cursor: pointer;
 }
 
-.info-box button:hover, .info-box button:focus {
+.info-box button:hover,
+.info-box button:focus {
     background-color: #0056b3;
 }
 
@@ -251,7 +253,8 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.question-button:hover, .question-button:focus {
+.question-button:hover,
+.question-button:focus {
     background-color: #0056b3;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
@@ -285,7 +288,8 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.accordion-btn:hover, .accordion-btn:focus {
+.accordion-btn:hover,
+.accordion-btn:focus {
     background-color: #0056b3;
 }
 
@@ -352,3 +356,19 @@ body {
     }
 }
 
+footer {
+    background-color: #08046a; /* Dark background for contrast */
+    color: white; /* White text color */
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: white; /* White color for links in the footer */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+footer a:hover {
+    color: #007bff; /* Blue color on hover */
+}
