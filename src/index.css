@@ -11,6 +11,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: #f0f0f0; /* Fallback background color */
 }
 
 .header {
@@ -41,6 +42,10 @@ body {
     border: 1px solid #ccc;
 }
 
+.navigation {
+    margin: 0;
+}
+
 .navigation ul {
     list-style-type: none;
     margin: 0;
@@ -63,7 +68,8 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.navigation a:hover {
+.navigation a:hover,
+.navigation a:focus {
     background-color: #0056b3;
 }
 
@@ -212,7 +218,8 @@ body {
     cursor: pointer;
 }
 
-.info-box button:hover {
+.info-box button:hover,
+.info-box button:focus {
     background-color: #0056b3;
 }
 
@@ -246,7 +253,8 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.question-button:hover {
+.question-button:hover,
+.question-button:focus {
     background-color: #0056b3;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
@@ -280,7 +288,8 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.accordion-btn:hover {
+.accordion-btn:hover,
+.accordion-btn:focus {
     background-color: #0056b3;
 }
 
@@ -325,22 +334,25 @@ body {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
+.fade-in {
+    animation: fadeIn 1s ease;
+}
+
+@media (max-width: 768px) {
+    .info-sections {
+        flex-direction: column;
+        align-items: center;
     }
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
+
+    .info-box {
+        width: 80%; /* Full width on smaller screens */
+        margin-bottom: 20px; /* Space between boxes */
     }
 }
 
@@ -353,9 +365,10 @@ footer {
 
 footer a {
     color: white; /* White color for links in the footer */
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 footer a:hover {
-    text-decoration: underline; /* Underline on hover */
+    color: #007bff; /* Blue color on hover */
 }
