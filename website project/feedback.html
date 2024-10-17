@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Website</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1, h3 {
+            text-align: center;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Accordion */
+        .accordion-btn {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            margin-top: -1px;
+        }
+
+        /* Feedback Form */
+        .info-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #feedback-form button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #feedback-form button:hover {
+            background-color: #218838;
+        }
+
+        #feedback-message {
+            color: green;
+            font-size: 1.1em;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+        }
+
+        /* Dropdown animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Our Feedback Section</h1>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+        <button class="dropdown-btn">Dropdown Menu</button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+
+    <!-- Accordion -->
+    <div class="accordion-container">
+        <button class="accordion-btn">Accordion Item 1</button>
+        <div class="accordion-content">
+            <p>This is the content for accordion item 1.</p>
+        </div>
+
+        <button class="accordion-btn">Accordion Item 2</button>
+        <div class="accordion-content">
+            <p>This is the content for accordion item 2.</p>
+        </div>
+
+        <button class="accordion-btn">Accordion Item 3</button>
+        <div class="accordion-content">
+            <p>This is the content for accordion item 3.</p>
+        </div>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="info-box">
+        <div class="icon-container">
+            <i class="fas fa-comments"></i>
+        </div>
+        <h3>Feedback</h3>
+        <p>We value your feedback. Let us know how we can improve your experience.</p>
+        <form id="feedback-form">
+            <textarea id="feedback-input" placeholder="Leave your feedback here..." required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <p id="feedback-message">Thank you for your feedback!</p>
+    </div>
+
+    <!-- Scroll Fade-In Section -->
+    <div class="fade-in" style="height: 300px; margin-top: 50px;">
+        <h3>This content fades in when you scroll!</h3>
+        <p>Scroll down to see more content appear.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            const accordionButtons = document.querySelectorAll('.accordion-btn');
+
+            // Dropdown logic
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', function () {
+                    const dropdownContent = this.querySelector('.dropdown-content');
+                    dropdownContent.style.display = 'block';
+                    dropdownContent.style.opacity = '0';
+                    dropdownContent.style.animation = 'fadeIn 0.3s forwards';
+                });
+                dropdown.addEventListener('mouseleave', function () {
+                    const dropdownContent = this.querySelector('.dropdown-content');
+                    dropdownContent.style.opacity = '1';
+                    dropdownContent.style.animation = 'fadeOut 0.3s forwards';
+                    dropdownContent.addEventListener('animationend', () => {
+                        dropdownContent.style.display = 'none';
+                    }, { once: true });
+                });
+            });
+
+            // Accordion logic
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.animation = 'fadeOut 0.3s forwards';
+                        content.addEventListener('animationend', () => {
+                            content.style.display = "none";
+                        }, { once: true });
+                    } else {
+                        content.style.display = "block";
+                        content.style.opacity = '0';
+                        content.style.animation = 'fadeIn 0.3s forwards';
+                    }
+                });
+            });
+
+            // Scroll animation
+            const scrollAnimation = () => {
+                const elements = document.querySelectorAll('.fade-in');
+                const windowHeight = window.innerHeight;
+
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    } else {
+                        element.classList.remove('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', scrollAnimation);
+            scrollAnimation();
+
+            // Feedback form submission logic
+            const feedbackForm = document.getElementById('feedback-form');
+            const feedbackInput = document.getElementById('feedback-input');
+            const feedbackMessage = document.getElementById('feedback-message');
+
+            feedbackForm.addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent form from reloading the page
+
+                const feedback = feedbackInput.value;
+
+                if (feedback) {
+                    feedbackMessage.style.display = 'block'; // Show thank you message
+                    feedbackInput.value = ''; // Clear the input field
+                }
+            });
+        });
+    </script>
+</body>
+</html>
