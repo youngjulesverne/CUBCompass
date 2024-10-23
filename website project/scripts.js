@@ -3,7 +3,7 @@ document.getElementById('switch-to-signup').addEventListener('click', function()
     document.getElementById('signup-form').classList.remove('hidden');
     document.getElementById('login-form').classList.add('hidden');
     
-    document.getElementById('welcome-text').textContent = "Create Your ReciMe Account!";
+    document.getElementById('welcome-text').textContent = "Create Your CUBCompass Account!";
 });
 
 document.getElementById('switch-to-login').addEventListener('click', function() {
