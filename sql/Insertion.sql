@@ -3,8 +3,8 @@ VALUES ('Community for Freshies', 'Freshie Group'),
        ('Main COnstructor University Community', 'University');
 
 INSERT INTO Users (user_name, user_password, email, community_id) 
-VALUES ('Rafael Hasanov', 'rafa123xx', 'rafael.hasanov@gmail.com', 1),
-       ('Sara Mamedova', '17082004Sara', 'sara.mamedova@gmail.com', 2);
+VALUES ('Test User One', 'test_password_1', 'test.user1@example.com', 1),
+       ('Test User Two', 'test_password_2', 'test.user2@example.com', 2);
 
 INSERT INTO Freshies (user_id) VALUES (1);
 
